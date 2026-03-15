@@ -1,35 +1,47 @@
 body 
 {
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   text-align: center;
-  background: #f2f2f2;
+  background: #afd6ff;
 }
 
 h1 
 {
-     top: 25px;
-    }
+  margin-top: 25px;
+}
 
+/* Grid container */
 .board 
 {
-  margin: 20px auto;
+  margin: 20px;
   display: grid;
   grid-template-columns: repeat(3, 100px);
   width: 306px;
 }
 
+/* Reset button styling */
 .cell 
 {
   width: 100px;
   height: 100px;
+    align-items: center;
   background: rgb(255, 192, 192);
   border: 1px solid rgb(221, 83, 83);
   font-size: 40px;
   cursor: pointer;
 }
 
-reset 
+.cell: hover 
 {
+  background: rgb(255, 170, 170);
+}
+.reset-btn
+{
+  margin-top: 15px;
   padding: 10px 20px;
   font-size: 23px;
+  border: 1px
+  background: #ffc0c0;         
+  cursor: pointer;
+  }
 }
