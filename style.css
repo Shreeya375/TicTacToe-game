@@ -1,6 +1,4 @@
 /* ---- reset ----*/
-
-/* basic font and format */ 
 * {
   margin: 0;
   padding: 0;
@@ -22,10 +20,7 @@ body
 {
    display: grid;
    grid-template-rows: 
-    auto /* title */
-    auto /* player turn display */
-    auto /* game board */
-    auto; /* reset button */
+    auto auto auto auto;
     gap: 1rem;
     max-width: 400px;
     width: 100%;
@@ -40,30 +35,44 @@ h1 {
 .display{
   font-size: 1.2rem;
 }
-.player-x { color #d32f2f;} /* red for X */
-.player-o { color: #1976d2;} /* blue for O */
+.player-x { color: #d32f2f;}    /*  red for X   */
+.player-o { color: #1976d2;}     /*  blue for O  */
 
 /* --- game board ---*/
 .board {
-  display: grid
+  display: grid;
   grid-template-columns: repeat(3,1fr);
   grid-template-rows: repeat(3,1fr);
-  display: flex; 
   gap: 5px;
   border: 3px solid #333;
 }
-/** add a title for individual tiles */ 
 
-.cell:hover    
-{
-  background: rgb(255, 170, 170); /* color of the background when mouse is hovering */
+/* individual tiles */ 
+.tile {
+  background: #fff;
+  font-size: 3rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  transition: background-color 0.2s;
 }
+.tile:hover 
+  {
+     background-color: #e0e0e0}   /* color of the background when mouse is hovering */
 
-/* Reset button format */
-.reset-btn
-{
-   display: block;
-  margin: 15px auto; /* centers the button */
-  padding: 10px 20px;
-  font-size: 23px;
+/* hide the name */
+.hide {display: none; }
+
+/* controls (reset button format */
+.controls { margin-top: 0.5rem; }
+.button.reset{
+  background-color: #c62828;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
 }
