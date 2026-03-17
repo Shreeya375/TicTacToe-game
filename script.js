@@ -39,7 +39,7 @@ function userAction(tile, index) {
     updateBoard(index);  // update the game state;
     handleResultValidation();  // check for win/tie
 
-    
+
     if(isGameActive) changePlayer();  // switch turns if game is still active and not over
 }
 
@@ -49,4 +49,19 @@ function isValidAction(tile) {
 
 function updateBoard(index) {
     board[index] = currentPlayer;  // update the board state
+}
+function changePlayer() {
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';  // toggle between X and O
+    displayCurrentPlayer.innerText = currentPlayer;  // update the display
+    displayCurrentPlayer.className = `player-${currentPlayer.toLowerCase()}`;  // update the color
+}
+
+/* announce win or tie in the game  */
+function announce(type) {
+    if (type === END_GAME.WIN) {
+        announcement.textContent = `Player ${currentPlayer} wins!`; // display the winner
+    } else if (type === END_GAME.TIE) {
+        announcement.textContent = "It's a tie!"; //display tie message
+    }
+    announcement.classList.remove('hide');
 }
