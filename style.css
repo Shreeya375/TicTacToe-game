@@ -59,9 +59,9 @@ h1 {
   height: 100px;
   transition: background-color 0.2s;
 }
-.tile:hover 
-  {
-     background-color: #e0e0e0}   /* color of the background when mouse is hovering */
+.tile:hover {
+     background-color: #e0e0e0;
+    }   /* color of the background when mouse is hovering */
 
 /* hide the name */
 .hide {display: none; }
