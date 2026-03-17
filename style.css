@@ -33,7 +33,7 @@ h1 {
 }
 /* -- player turn display ---*/
 .display{
-  font-size: 1.2rem;
+  font-weight: bold;
 }
 .player-x { color: #d32f2f;}    /*  red for X   */
 .player-o { color: #1976d2;}     /*  blue for O  */
@@ -64,11 +64,11 @@ h1 {
     }   /* color of the background when mouse is hovering */
 
 /* hide the name */
-.hide {display: none; }
-
-/* controls (reset button format */
-.controls { margin-top: 0.5rem; }
-.button.reset{
+.hide {
+  display: none; 
+}
+/* -- reset btn --*/
+.reset{
   background-color: #c62828;
   color: #fff;
   border: none;
