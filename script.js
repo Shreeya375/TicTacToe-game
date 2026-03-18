@@ -3,7 +3,7 @@ const board = Array(9).fill('');  // 3 x 3 tic tac toe board
 let currentPlayer = 'X';  // player X always goes first
 let isGameActive = true;  // flag to track if the game has ended
 
-const END_Game = {
+const END_GAME = {
     WIN: 'win',
     TIE: 'tie',
     NONE: 'none',
@@ -36,20 +36,12 @@ function userAction(tile, index) {
     if (!isValidAction(tile) || !isGameActive) return;  // ignore if game is over or tile is occupied 
     tile.innerText = currentPlayer;  // mark the tile
     tile.classList.add(`player-${currentPlayer.toLowerCase()}`); // add player-specific class for styling
-    updateBoard(index);  // update the game state;
-    handleResultValidation();  // check for win/tie
+    board[index] = currentPlayer;  //update the board to current player at index
+
+        handleResultValidation();  // check for win or tie
+        if (isGameActive) changePlayer();  // switch player if game is still active
 
 
-    if(isGameActive) changePlayer();  // switch turns if game is still active and not over
-}
-
-function isValidAction(tile) {
-    return tile.innerText === '';  // valid if the tile is empty
-}
-
-function updateBoard(index) {
-    board[index] = currentPlayer;  // update the board state
-}
 function changePlayer() {
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';  // toggle between X and O
     displayCurrentPlayer.innerText = currentPlayer;  // update the display
@@ -77,4 +69,10 @@ function announce(type) {
             return;
         }
     }
+    if (!board.includes('')) {
+        announce(END_GAME.TIE);
+        isGameActive = false;
     }
+  }
+}
+
