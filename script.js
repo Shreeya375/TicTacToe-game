@@ -65,3 +65,16 @@ function announce(type) {
     }
     announcement.classList.remove('hide');
 }
+
+/* check the board for win or tie after each move */
+    handleResultValidation() 
+    {
+    for (const condition of winningConditions) {
+        const [a, b, c] = condition;
+        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+            announce(END_GAME.WIN);
+            isGameActive = false;
+            return;
+        }
+    }
+    }
