@@ -74,5 +74,22 @@ function announce(type) {
         isGameActive = false;
     }
   }
+  /* reset everything to start a new round of the game */
+   function reset() {
+    board.fill('');  // clear the board
+    isGameActive = true;
+    currentPlayer = 'X';  // reset to player X
+    displayCurrentPlayer.innerText = currentPlayer;
+    displayCurrentPlayer.className = `player-${currentPlayer.toLowerCase()}`;  // reset color
+    announcement.classList.add('hide');
+    announcement.textContent = '';
+
+
+    tiles.forEach(tile => {
+        tile.innerText = '';
+        tile.className = 'tile';  // reset to default tile class
+    });  
+}
+
 }
 
