@@ -34,12 +34,14 @@ resetButton.addEventListener('click', resetGame);
 
 function userAction(tile, index) {
     if (!isValidAction(tile) || !isGameActive) return;  // ignore if game is over or tile is occupied 
+
     tile.innerText = currentPlayer;  // mark the tile
     tile.classList.add(`player-${currentPlayer.toLowerCase()}`); // add player-specific class for styling
     board[index] = currentPlayer;  //update the board to current player at index
 
-        handleResultValidation();  // check for win or tie
-        if (isGameActive) changePlayer();  // switch player if game is still active
+    handleResultValidation();  // check for win or tie
+
+    if (isGameActive) changePlayer();  // switch player if game is still active
 
 
 function changePlayer() {
@@ -59,8 +61,7 @@ function announce(type) {
 }
 
 /* check the board for win or tie after each move */
-    handleResultValidation() 
-    {
+    function handleResultValidation() {
     for (const condition of winningConditions) {
         const [a, b, c] = condition;
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
@@ -69,13 +70,17 @@ function announce(type) {
             return;
         }
     }
+    //if no empty squares then say tie
     if (!board.includes('')) {
         announce(END_GAME.TIE);
         isGameActive = false;
     }
   }
+  function isValidAction(tile) {
+    return tile.innerText === '';  // valid if the tile is empty
+}
   /* reset everything to start a new round of the game */
-   function reset() {
+   function resetGame() {
     board.fill('');  // clear the board
     isGameActive = true;
     currentPlayer = 'X';  // reset to player X
@@ -90,6 +95,7 @@ function announce(type) {
         tile.className = 'tile';  // reset to default tile class
     });  
 }
-
+/* initial UI setup */
+displayCurrentPlayer.textContent = currentPlayer;
+displayCurrentPlayer.className = 'display-player player-x';
 }
-
