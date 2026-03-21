@@ -35,12 +35,15 @@ h1 {
 .display{
   font-weight: bold;
 }
+.display-player{
+
+}
 .display-player.player-x,
-.player-x{   /*  red for X   */
+.player-x {   /*  red for X   */
   color: #d32f2f;
 }  
-.display-player.player-o 
-  .player-o {
+.display-player.player-o,
+.player-o {
   color: #1976d2;  /*  blue for O  */
 }    
 
