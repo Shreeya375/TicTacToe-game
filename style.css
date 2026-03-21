@@ -35,8 +35,14 @@ h1 {
 .display{
   font-weight: bold;
 }
-.player-x { color: #d32f2f;}    /*  red for X   */
-.player-o { color: #1976d2;}     /*  blue for O  */
+.display-player.player-x,
+.player-x{   /*  red for X   */
+  color: #d32f2f;
+}  
+.display-player.player-o 
+  .player-o {
+  color: #1976d2;  /*  blue for O  */
+}    
 
 /* --- game board ---*/
 .board {
