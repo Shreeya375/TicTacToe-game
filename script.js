@@ -42,12 +42,13 @@ function userAction(tile, index) {
     handleResultValidation();  // check for win or tie
 
     if (isGameActive) changePlayer();  // switch player if game is still active
+}
 
 
 function changePlayer() {
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';  // toggle between X and O
-    displayCurrentPlayer.innerText = currentPlayer;  // update the display
-    displayCurrentPlayer.className = `player-${currentPlayer.toLowerCase()}`;  // update the color
+    displayCurrentPlayer.textContent = currentPlayer;
+    displayCurrentPlayer.className = `display-player player-${currentPlayer.toLowerCase()}`;
 }
 
 /* announce win or tie in the game  */
@@ -61,7 +62,7 @@ function announce(type) {
 }
 
 /* check the board for win or tie after each move */
-    function handleResultValidation() {
+function handleResultValidation() {
     for (const condition of winningConditions) {
         const [a, b, c] = condition;
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
@@ -80,12 +81,14 @@ function announce(type) {
     return tile.innerText === '';  // valid if the tile is empty
 }
   /* reset everything to start a new round of the game */
-   function resetGame() {
+function resetGame() {
     board.fill('');  // clear the board
     isGameActive = true;
     currentPlayer = 'X';  // reset to player X
-    displayCurrentPlayer.innerText = currentPlayer;
-    displayCurrentPlayer.className = `player-${currentPlayer.toLowerCase()}`;  // reset color
+
+    displayCurrentPlayer.textContent = currentPlayer;
+    displayCurrentPlayer.className = 'display-player player-x'; // reset display to player X
+    
     announcement.classList.add('hide');
     announcement.textContent = '';
 
@@ -94,8 +97,4 @@ function announce(type) {
         tile.innerText = '';
         tile.className = 'tile';  // reset to default tile class
     });  
-}
-/* initial UI setup */
-displayCurrentPlayer.textContent = currentPlayer;
-displayCurrentPlayer.className = 'display-player player-x';
 }
