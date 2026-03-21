@@ -15,7 +15,6 @@ const winningConditions = [
     [0,3,6], [1,4,7], [2,5,8],  // columns
     [0,4,8], [2,4,6]             // diagonals
 ];
-
 /* references == */
 
 const tiles = Array.from(document.querySelectorAll('.tile'));  // all the tiles
@@ -87,8 +86,7 @@ function resetGame() {
     currentPlayer = 'X';  // reset to player X
 
     displayCurrentPlayer.textContent = currentPlayer;
-    displayCurrentPlayer.className = 'display-player player-x'; // reset display to player X
-    
+    displayCurrentPlayer.className = `display-player player-${currentPlayer.toLowerCase()}`;
     announcement.classList.add('hide');
     announcement.textContent = '';
 
@@ -97,4 +95,6 @@ function resetGame() {
         tile.innerText = '';
         tile.className = 'tile';  // reset to default tile class
     });  
-}
+}}
+displayCurrentPlayer.textContent = currentPlayer;
+displayCurrentPlayer.className = 'display-player player-x';
