@@ -9,7 +9,7 @@ const END_GAME = {
     NONE: 'none',
 };
 
-/* all winning  combos */
+/* all winning combos */
 const winningConditions = [
     [0,1,2], [3,4,5], [6,7,8],  // rows
     [0,3,6], [1,4,7], [2,5,8],  // columns
@@ -20,7 +20,7 @@ const winningConditions = [
 const tiles = Array.from(document.querySelectorAll('.tile'));  // all the tiles
 const announcement = document.getElementById('announcement');  // end game message 
 const resetButton = document.getElementById('reset');  // reset button
-const displayCurrentPlayer = document.getElementById('current-player');  // display current player
+const displayCurrentPlayer = document.getElementById('current-player'); //displays current player turn
 
 /* --- event listeners --- */
 tiles.forEach((tile, idx) => {
@@ -43,8 +43,8 @@ function userAction(tile, index) {
     if (isGameActive) changePlayer();  // switch player if game is still active
 }
 
-
-function changePlayer() {
+function changePlayer()
+ {
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';  // toggle between X and O
     displayCurrentPlayer.textContent = currentPlayer;
     displayCurrentPlayer.className = `display-player player-${currentPlayer.toLowerCase()}`;
@@ -87,6 +87,7 @@ function resetGame() {
 
     displayCurrentPlayer.textContent = currentPlayer;
     displayCurrentPlayer.className = `display-player player-${currentPlayer.toLowerCase()}`;
+
     announcement.classList.add('hide');
     announcement.textContent = '';
 
@@ -95,6 +96,6 @@ function resetGame() {
         tile.innerText = '';
         tile.className = 'tile';  // reset to default tile class
     });  
-}}
+}
 displayCurrentPlayer.textContent = currentPlayer;
 displayCurrentPlayer.className = 'display-player player-x';
